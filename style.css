@@ -1,0 +1,237 @@
+/* Configurações Gerais e Cores */
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --success: #10b981;
+  --danger: #ef4444;
+  --bg-app: #f8fafc;
+  --text-main: #1e293b;
+  --border-color: #e2e8f0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  margin: 0;
+  padding: 40px 20px;
+  line-height: 1.5;
+}
+
+/* Container do Formulário */
+.container-form {
+  max-width: 900px;
+  margin: 0 auto 50px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #0f172a;
+  border-left: 4px solid var(--primary);
+  padding-left: 12px;
+}
+
+/* Grid de Cabeçalho do Form */
+.header-inputs {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+/* Estilização de Inputs */
+input, textarea {
+  font-family: inherit;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Tabela de Entrada (Inputs Dinâmicos) */
+#tabela-input {
+  width: 100%;
+  border-spacing: 0;
+  margin-bottom: 16px;
+}
+
+#tabela-input th {
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  padding: 8px;
+}
+
+.linha-item td {
+  padding: 8px;
+}
+
+/* Botões */
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.2s;
+  border: none;
+}
+
+button:active { transform: scale(0.98); }
+
+.btn-add {
+  background-color: #f1f5f9;
+  color: var(--primary);
+  border: 1px dashed var(--primary);
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.btn-add:hover { background-color: rgba(79, 70, 229, 0.05); }
+
+.btn-del {
+  background-color: #fee2e2;
+  color: var(--danger);
+  padding: 8px;
+  line-height: 1;
+}
+
+.btn-del:hover { background-color: var(--danger); color: white; }
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 24px;
+}
+
+.btn-pdf { background-color: var(--primary); color: white; }
+.btn-print { background-color: #1e293b; color: white; }
+
+/* ---------------------------------------------------
+   ESTILO DO DOCUMENTO (PAPEL TIMBRADO)
+------------------------------------------------------ */
+#relatorio {
+  visibility: hidden;
+  position: absolute;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 25mm;
+  background: white;
+  margin: 0 auto;
+  box-shadow: 0 0 50px rgba(0,0,0,0.1); /* Efeito de papel flutuando na tela */
+  color: #111;
+}
+
+.header-timbrado {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid #111;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--primary); }
+
+.empresa-info h2 { margin: 0; font-size: 1.2rem; }
+.empresa-info p { margin: 4px 0; color: #444; font-size: 0.9rem; }
+
+.tabela-final {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+}
+
+.tabela-final th {
+  background: #f1f5f9;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.tabela-final td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.tabela-final tfoot td {
+  padding: 20px 12px;
+  font-size: 1.1rem;
+  background: #f8fafc;
+}
+
+.obs-section {
+  margin-top: 40px;
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.assinaturas {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+
+.campo-assinatura { text-align: center; }
+.linha { border-top: 1.5px solid #000; margin-bottom: 8px; }
+
+/* REGRAS DE IMPRESSÃO */
+@media print {
+  body { background: white; padding: 0; }
+  .no-print { display: none !important; }
+  #relatorio {
+    visibility: visible !important;
+    position: static !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+}
+
+#relatorio {
+  visibility: hidden;
+  position: absolute;
+  width: 100%; /* Mudamos de 210mm para 100% para evitar overflow */
+  max-width: 800px; /* Limite visual na tela */
+  padding: 30px;
+  background: white;
+  margin: 0 auto;
+  color: #111;
+  box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+}
+
+/* Garante que a tabela não transborde */
+.tabela-final {
+  width: 100%;
+  table-layout: fixed; /* Força a tabela a respeitar os limites */
+  word-wrap: break-word;
+}
